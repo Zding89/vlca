@@ -64,7 +64,7 @@ export default {
 				// const url = new URL(request.url);
 				switch (url.pathname) {
 				case '/':
-					return new Response(JSON.stringify(request.cf), { status: 200 });
+					return;
 				case `/${userID}`: {
 					const vlessConfig = await getVLESSConfig(userID, request.headers.get('Host'), sub, userAgent, RproxyIP);
 					const now = Date.now();
@@ -91,7 +91,7 @@ export default {
 					}
 				}
 				default:
-					return new Response('Not found', { status: 404 });
+					return;
 				}
 			} else {
 				if (new RegExp('/proxyip=', 'i').test(url.pathname)) proxyIP = url.pathname.split("=")[1];
